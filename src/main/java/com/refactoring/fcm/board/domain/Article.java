@@ -2,11 +2,13 @@ package com.refactoring.fcm.board.domain;
 
 import com.refactoring.fcm.user.domain.User;
 import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
 public class Article {
 
     @Id
@@ -21,7 +23,7 @@ public class Article {
 
     private String contents;
 
-    @OneToMany(mappedBy = "article_id")
+    @OneToMany(mappedBy = "article")
     private List<Comment> comments;
 
     @Builder
