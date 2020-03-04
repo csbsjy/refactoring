@@ -1,10 +1,15 @@
 package com.refactoring.fcm.board.domain;
 
 import com.refactoring.fcm.user.domain.User;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Comment {
 

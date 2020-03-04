@@ -1,14 +1,18 @@
 package com.refactoring.fcm.board.domain;
 
 import com.refactoring.fcm.user.domain.User;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
 public class Article {
 
     @Id
@@ -24,7 +28,7 @@ public class Article {
     private String contents;
 
     @OneToMany(mappedBy = "article")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @Builder
     public Article(User user, String subject, String contents) {

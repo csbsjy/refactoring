@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ArticleResponseDto {
@@ -16,6 +18,8 @@ public class ArticleResponseDto {
     private String subject;
     private String contents;
 
+    private List<CommentResponseDto> commentResponseDtos;
+
     @Builder
     public ArticleResponseDto(String userId, UserType userType, String subject, String contents) {
         this.userId = userId;
@@ -23,4 +27,5 @@ public class ArticleResponseDto {
         this.subject = subject;
         this.contents = contents;
     }
+
 }
