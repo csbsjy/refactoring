@@ -1,14 +1,21 @@
 package com.refactoring.fcm.board.domain;
 
 import com.refactoring.fcm.user.domain.User;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Article {
 
     @Id
@@ -23,8 +30,14 @@ public class Article {
 
     private String contents;
 
-    @OneToMany(mappedBy = "article")
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private List<Comment> comments = new ArrayList<>();
+
+    @CreatedDate
+    private LocalDateTime localDateTime;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDateTime;
 
     @Builder
     public Article(User user, String subject, String contents) {

@@ -1,11 +1,19 @@
 package com.refactoring.fcm.board.domain;
 
 import com.refactoring.fcm.user.domain.User;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment {
 
     @Id
@@ -16,11 +24,17 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "article_id")
     private Article article;
 
     private String content;
+
+    @CreatedDate
+    private LocalDateTime createDateTime;
+
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDateTime;
 
     @Builder
     public Comment(User user, Article article, String content) {
