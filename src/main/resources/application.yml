@@ -1,16 +1,18 @@
 spring:
   profiles:
-    active: dev
+    active: test
 
 ---
 
 spring:
-  profiles: dev
+  profiles: test
   datasource:
+    data: classpath:data.sql
     driver-class-name: org.h2.Driver
     username: sa
     password:
-    url: jdbc:h2:file://~/fcm;
+    hikari:
+      jdbc-url: jdbc:h2:file:~/fcm-test;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
   h2:
     console:
       enabled: true
@@ -23,6 +25,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
 
 server:
   port: 8888
