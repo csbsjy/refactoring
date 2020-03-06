@@ -1,7 +1,7 @@
 package com.fcm.refactoring.api;
 
+import com.fcm.refactoring.board.dto.ArticleListResponseDto;
 import com.fcm.refactoring.service.board.ArticleService;
-import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
