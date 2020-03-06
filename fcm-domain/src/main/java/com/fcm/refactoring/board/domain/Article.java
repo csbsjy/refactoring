@@ -30,6 +30,8 @@ public class Article {
 
     private String contents;
 
+    private boolean display;
+
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 
@@ -44,5 +46,10 @@ public class Article {
         this.user = user;
         this.subject = subject;
         this.contents = contents;
+    }
+
+    public Long delete() {
+        this.display = false;
+        return this.id;
     }
 }

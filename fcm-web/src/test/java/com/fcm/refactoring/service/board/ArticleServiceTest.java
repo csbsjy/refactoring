@@ -1,7 +1,7 @@
 package com.fcm.refactoring.service.board;
 
-import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
-import com.fcm.refactoring.service.board.dto.ArticleResponseDto;
+import com.fcm.refactoring.board.dto.ArticleListResponseDto;
+import com.fcm.refactoring.board.dto.ArticleResponseDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

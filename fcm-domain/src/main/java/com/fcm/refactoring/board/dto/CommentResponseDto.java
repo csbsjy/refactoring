@@ -1,4 +1,4 @@
-package com.fcm.refactoring.service.board.dto;
+package com.fcm.refactoring.board.dto;
 
 import com.fcm.refactoring.board.domain.Comment;
 import lombok.AccessLevel;
