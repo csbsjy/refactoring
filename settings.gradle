@@ -1,1 +1,5 @@
 rootProject.name = 'fitnessCenterManagementSystem'
+include 'fcm-domain'
+include 'fcm-web'
+include 'common'
+
