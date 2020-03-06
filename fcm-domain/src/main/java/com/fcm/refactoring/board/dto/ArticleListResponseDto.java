@@ -12,12 +12,4 @@ public class ArticleListResponseDto {
     private String subject;
     private String createDateTime;
     private Long commentCount;
-
-    public ArticleListResponseDto(Long id, String userId, String subject, String createDateTime, Long commentCount) {
-        this.id = id;
-        this.userId = userId;
-        this.subject = subject;
-        this.createDateTime = createDateTime;
-        this.commentCount = commentCount;
-    }
 }

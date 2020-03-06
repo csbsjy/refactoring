@@ -16,7 +16,6 @@ import java.util.List;
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
-    // TODO: Comment Count 만 받아오는 쿼리를 별도로 만들자
     @Transactional(readOnly = true)
     public List<ArticleListResponseDto> findAllList() {
         return articleRepository.findAllArticleAndCommentCount();
