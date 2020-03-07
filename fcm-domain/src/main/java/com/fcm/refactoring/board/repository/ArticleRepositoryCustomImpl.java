@@ -20,7 +20,8 @@ public class ArticleRepositoryCustomImpl implements ArticleRepositoryCustom {
 
     @Override
     public List<ArticleListResponseDto> findAllArticleAndCommentCount() {
-        return queryFactory.select(Projections.fields(ArticleListResponseDto.class,
+        return queryFactory.select(Projections.constructor(ArticleListResponseDto.class,
+                article.id, article.user.userId, article.subject, article.createDateTime,
                 ExpressionUtils.as(
                         JPAExpressions.select(count(comment.id))
                                 .from(comment)
@@ -28,6 +29,7 @@ public class ArticleRepositoryCustomImpl implements ArticleRepositoryCustom {
                         "commentCount"
                 )))
                 .from(article)
+                .where(article.display.isTrue())
                 .fetch();
     }
 }
