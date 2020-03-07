@@ -36,20 +36,25 @@ public class Article {
     private List<Comment> comments = new ArrayList<>();
 
     @CreatedDate
-    private LocalDateTime localDateTime;
+    private LocalDateTime createDateTime;
 
     @LastModifiedDate
     private LocalDateTime modifiedDateTime;
-
-    @Builder
-    public Article(User user, String subject, String contents) {
-        this.user = user;
-        this.subject = subject;
-        this.contents = contents;
-    }
 
     public Long delete() {
         this.display = false;
         return this.id;
     }
+
+    @Builder
+    public Article(User user, String subject, String contents, boolean display, List<Comment> comments, LocalDateTime createDateTime, LocalDateTime modifiedDateTime) {
+        this.user = user;
+        this.subject = subject;
+        this.contents = contents;
+        this.display = display;
+        this.comments = comments;
+        this.createDateTime = createDateTime;
+        this.modifiedDateTime = modifiedDateTime;
+    }
+
 }

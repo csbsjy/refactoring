@@ -19,5 +19,4 @@ public class ArticleUpdateRequestDto {
         this.subject = subject;
         this.content = content;
     }
-
 }

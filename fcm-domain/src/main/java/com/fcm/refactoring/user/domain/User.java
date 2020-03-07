@@ -37,15 +37,17 @@ public class User {
     private boolean enable;
 
     @Builder
-    public User(String userId, String userName, int age, Gender gender) {
+    public User(String userId, String userName, int age, Gender gender, UserType userType, LocalDateTime createDateTime, boolean enable) {
         this.userId = userId;
         this.userName = userName;
         this.age = age;
         this.gender = gender;
+        this.userType = userType;
+        this.createDateTime = createDateTime;
+        this.enable = enable;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUserTypeName(){
+        return userType.getName();
     }
-
 }
