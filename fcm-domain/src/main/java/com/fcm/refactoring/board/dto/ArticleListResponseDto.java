@@ -22,4 +22,12 @@ public class ArticleListResponseDto {
         this.createDateTime = LocalDateTimeConverter.convert(createDateTime);
         this.commentCount = commentCount;
     }
+
+    public ArticleListResponseDto(Long id, String userId, String subject, String createDateTime, Long commentCount) {
+        this.id = id;
+        this.userId = userId;
+        this.subject = subject;
+        this.createDateTime = createDateTime;
+        this.commentCount = commentCount;
+    }
 }

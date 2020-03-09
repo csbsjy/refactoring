@@ -3,6 +3,7 @@ package com.fcm.refactoring.service.board;
 import com.fcm.refactoring.board.domain.Article;
 import com.fcm.refactoring.board.dto.ArticleListResponseDto;
 import com.fcm.refactoring.board.dto.ArticleResponseDto;
+import com.fcm.refactoring.board.dto.ArticleUpdateRequestDto;
 import com.fcm.refactoring.board.repository.ArticleRepository;
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;
@@ -70,6 +71,8 @@ class ArticleServiceTest {
 
         );
     }
+
+
 
     private Article makeArticle() {
         User user = new User("a1010100z", "재연", 26, Gender.WOMAN,
