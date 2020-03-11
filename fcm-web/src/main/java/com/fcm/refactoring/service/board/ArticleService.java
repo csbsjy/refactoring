@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +23,9 @@ public class ArticleService {
 
     @Transactional(readOnly = true)
     public List<ArticleListResponseDto> findAllList() {
-        return articleRepository.findAllArticleAndCommentCount();
+        return articleRepository.findAllArticleAndCommentCount().stream()
+                .map(ArticleListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
@@ -32,7 +35,8 @@ public class ArticleService {
         return new ArticleResponseDto(findedArticle);
     }
 
-    public Long write(ArticleUpdateRequestDto articleUpdateRequestDto){
+    @Transactional
+    public Long write(ArticleUpdateRequestDto articleUpdateRequestDto) {
         User user = userRepository.findByUserId(articleUpdateRequestDto.getUserId())
                 .orElseThrow(() -> new IllegalArgumentException(String.format("%s 아이디의 유저는 없습니다.", articleUpdateRequestDto.getUserId())));
         Article article = Article.builder()
@@ -43,6 +47,14 @@ public class ArticleService {
         articleRepository.save(article);
 
         return article.getId();
+    }
+
+    @Transactional
+    public Long delete(Long id) {
+        // TODO: 인증과정 필요
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("%s 번 게시글은 존재하지 않습니다", id)));
+        return article.delete();
     }
 
 }

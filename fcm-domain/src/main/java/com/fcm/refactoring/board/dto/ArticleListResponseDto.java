@@ -1,9 +1,11 @@
 package com.fcm.refactoring.board.dto;
 
+import com.fcm.refactoring.board.repository.dao.ArticleRow;
 import com.fcm.refactoring.utils.LocalDateTimeConverter;
-import lombok.*;
-
-import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
@@ -15,19 +17,11 @@ public class ArticleListResponseDto {
     private Long commentCount;
 
     @Builder
-    public ArticleListResponseDto(Long id, String userId, String subject, LocalDateTime createDateTime, Long commentCount) {
-        this.id = id;
-        this.userId = userId;
-        this.subject = subject;
-        this.createDateTime = LocalDateTimeConverter.convert(createDateTime);
-        this.commentCount = commentCount;
-    }
-
-    public ArticleListResponseDto(Long id, String userId, String subject, String createDateTime, Long commentCount) {
-        this.id = id;
-        this.userId = userId;
-        this.subject = subject;
-        this.createDateTime = createDateTime;
-        this.commentCount = commentCount;
+    public ArticleListResponseDto(ArticleRow articleRow) {
+        this.id = articleRow.getId();
+        this.userId = articleRow.getUserId();
+        this.subject = articleRow.getSubject();
+        this.createDateTime = LocalDateTimeConverter.convert(articleRow.getCreateDateTime());
+        this.commentCount = articleRow.getCommentCount();
     }
 }
