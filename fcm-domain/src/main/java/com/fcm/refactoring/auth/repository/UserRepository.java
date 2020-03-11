@@ -1,6 +1,6 @@
-package com.fcm.refactoring.user.repository;
+package com.fcm.refactoring.auth.repository;
 
-import com.fcm.refactoring.user.domain.User;
+import com.fcm.refactoring.auth.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

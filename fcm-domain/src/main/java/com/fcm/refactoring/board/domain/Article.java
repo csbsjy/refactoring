@@ -1,6 +1,6 @@
 package com.fcm.refactoring.board.domain;
 
-import com.fcm.refactoring.user.domain.User;
+import com.fcm.refactoring.auth.domain.User;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

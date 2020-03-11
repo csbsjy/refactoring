@@ -1,7 +1,7 @@
-package com.fcm.refactoring.user.domain;
+package com.fcm.refactoring.auth.domain;
 
-import com.fcm.refactoring.user.Gender;
-import com.fcm.refactoring.user.UserType;
+import com.fcm.refactoring.auth.Gender;
+import com.fcm.refactoring.auth.UserType;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
