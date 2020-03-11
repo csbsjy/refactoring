@@ -1,6 +1,6 @@
 package com.fcm.refactoring.board.repository;
 
-import com.fcm.refactoring.board.dto.ArticleListResponseDto;
+import com.fcm.refactoring.board.repository.dao.ArticleRow;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
@@ -19,8 +19,8 @@ public class ArticleRepositoryCustomImpl implements ArticleRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<ArticleListResponseDto> findAllArticleAndCommentCount() {
-        return queryFactory.select(Projections.constructor(ArticleListResponseDto.class,
+    public List<ArticleRow> findAllArticleAndCommentCount() {
+        return queryFactory.select(Projections.constructor(ArticleRow.class,
                 article.id, article.user.userId, article.subject, article.createDateTime,
                 ExpressionUtils.as(
                         JPAExpressions.select(count(comment.id))
@@ -32,4 +32,6 @@ public class ArticleRepositoryCustomImpl implements ArticleRepositoryCustom {
                 .where(article.display.isTrue())
                 .fetch();
     }
+
+
 }

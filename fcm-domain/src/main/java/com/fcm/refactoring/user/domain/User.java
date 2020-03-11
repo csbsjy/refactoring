@@ -47,6 +47,7 @@ public class User {
         this.enable = enable;
     }
 
+
     public String getUserTypeName(){
         return userType.getName();
     }
