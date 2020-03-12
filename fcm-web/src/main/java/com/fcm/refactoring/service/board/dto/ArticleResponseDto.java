@@ -1,4 +1,4 @@
-package com.fcm.refactoring.board.dto;
+package com.fcm.refactoring.service.board.dto;
 
 import com.fcm.refactoring.board.domain.Article;
 import com.fcm.refactoring.utils.LocalDateTimeConverter;
@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ArticleResponseDto {
 
+    private Long id;
     private String userId;
     private String userType;
 
@@ -19,6 +20,7 @@ public class ArticleResponseDto {
     private String createDateTime;
 
     public ArticleResponseDto(Article article) {
+        this.id = article.getId();
         this.userId = article.getUser().getUserId();
         this.userType = article.getUser().getUserTypeName();
         this.subject = article.getSubject();

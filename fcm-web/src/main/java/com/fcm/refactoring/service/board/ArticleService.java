@@ -1,13 +1,13 @@
 package com.fcm.refactoring.service.board;
 
 
-import com.fcm.refactoring.auth.domain.User;
-import com.fcm.refactoring.auth.repository.UserRepository;
 import com.fcm.refactoring.board.domain.Article;
-import com.fcm.refactoring.board.dto.ArticleListResponseDto;
-import com.fcm.refactoring.board.dto.ArticleResponseDto;
-import com.fcm.refactoring.board.dto.ArticleUpdateRequestDto;
 import com.fcm.refactoring.board.repository.ArticleRepository;
+import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
+import com.fcm.refactoring.service.board.dto.ArticleResponseDto;
+import com.fcm.refactoring.service.board.dto.ArticleUpdateRequestDto;
+import com.fcm.refactoring.user.domain.User;
+import com.fcm.refactoring.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

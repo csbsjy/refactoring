@@ -1,4 +1,4 @@
-package com.fcm.refactoring.auth;
+package com.fcm.refactoring.user;
 
 import lombok.Getter;
 

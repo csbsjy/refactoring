@@ -1,13 +1,13 @@
 package com.fcm.refactoring.service.board;
 
-import com.fcm.refactoring.auth.Gender;
-import com.fcm.refactoring.auth.UserType;
-import com.fcm.refactoring.auth.domain.User;
 import com.fcm.refactoring.board.domain.Article;
-import com.fcm.refactoring.board.dto.ArticleListResponseDto;
-import com.fcm.refactoring.board.dto.ArticleResponseDto;
 import com.fcm.refactoring.board.repository.ArticleRepository;
 import com.fcm.refactoring.board.repository.dao.ArticleRow;
+import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
+import com.fcm.refactoring.service.board.dto.ArticleResponseDto;
+import com.fcm.refactoring.user.Gender;
+import com.fcm.refactoring.user.UserType;
+import com.fcm.refactoring.user.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

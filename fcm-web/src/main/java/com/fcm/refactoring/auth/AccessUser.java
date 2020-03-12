@@ -1,12 +1,13 @@
 package com.fcm.refactoring.auth;
 
+import com.fcm.refactoring.user.UserType;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AccessUser {
     private String userId;
     private String userName;

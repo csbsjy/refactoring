@@ -1,6 +1,6 @@
 package com.fcm.refactoring.board.domain;
 
-import com.fcm.refactoring.auth.domain.User;
+import com.fcm.refactoring.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

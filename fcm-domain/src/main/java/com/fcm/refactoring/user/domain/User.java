@@ -1,7 +1,7 @@
-package com.fcm.refactoring.auth.domain;
+package com.fcm.refactoring.user.domain;
 
-import com.fcm.refactoring.auth.Gender;
-import com.fcm.refactoring.auth.UserType;
+import com.fcm.refactoring.user.Gender;
+import com.fcm.refactoring.user.UserType;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +22,7 @@ public class User {
 
     @Column(unique = true)
     private String userId;
+    private String password;
     private String userName;
     private int age;
 
@@ -47,8 +48,13 @@ public class User {
         this.enable = enable;
     }
 
+    public boolean isValidPassword(final String password) {
+        return this.password.equals(password);
+    }
 
-    public String getUserTypeName(){
+    public String getUserTypeName() {
         return userType.getName();
     }
+
+
 }
