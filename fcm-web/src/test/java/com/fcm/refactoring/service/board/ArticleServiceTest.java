@@ -99,7 +99,7 @@ class ArticleServiceTest {
     }
 
     private User makeUser() {
-        return new User("a1010100z@naver.com", "서재연", 26,
+        return new User("a1010100z@naver.com", "1234", "서재연", 26,
                 Gender.WOMAN, UserType.TRAINER, LocalDateTime.now(), true);
     }
 
