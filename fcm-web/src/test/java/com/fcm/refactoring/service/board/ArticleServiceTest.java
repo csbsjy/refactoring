@@ -1,10 +1,10 @@
 package com.fcm.refactoring.service.board;
 
 import com.fcm.refactoring.board.domain.Article;
-import com.fcm.refactoring.board.dto.ArticleListResponseDto;
-import com.fcm.refactoring.board.dto.ArticleResponseDto;
 import com.fcm.refactoring.board.repository.ArticleRepository;
 import com.fcm.refactoring.board.repository.dao.ArticleRow;
+import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
+import com.fcm.refactoring.service.board.dto.ArticleResponseDto;
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;
 import com.fcm.refactoring.user.domain.User;

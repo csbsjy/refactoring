@@ -1,4 +1,4 @@
-package com.fcm.refactoring.board.dto;
+package com.fcm.refactoring.service.board.dto;
 
 import com.fcm.refactoring.board.repository.dao.ArticleRow;
 import com.fcm.refactoring.utils.LocalDateTimeConverter;
