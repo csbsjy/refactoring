@@ -96,7 +96,7 @@ class ArticleServiceTest {
 
 
     private Article makeArticle() {
-        User user = new User("a1010100z", "재연", 26, Gender.WOMAN,
+        User user = new User("a1010100z", "1234", "재연", 26, Gender.WOMAN,
                 UserType.TRAINER, LocalDateTime.now(), true);
         Article article = new Article(1L, user, "제목 1", "내용 1", true,
                 Collections.EMPTY_LIST, LocalDateTime.now(), LocalDateTime.now());

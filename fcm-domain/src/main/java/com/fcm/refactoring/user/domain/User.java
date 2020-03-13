@@ -38,8 +38,9 @@ public class User {
     private boolean enable;
 
     @Builder
-    public User(String userId, String userName, int age, Gender gender, UserType userType, LocalDateTime createDateTime, boolean enable) {
+    public User(String userId, String password, String userName, int age, Gender gender, UserType userType, LocalDateTime createDateTime, boolean enable) {
         this.userId = userId;
+        this.password = password;
         this.userName = userName;
         this.age = age;
         this.gender = gender;
