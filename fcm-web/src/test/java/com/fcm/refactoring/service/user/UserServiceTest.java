@@ -1,7 +1,6 @@
 package com.fcm.refactoring.service.user;
 
 import com.fcm.refactoring.service.user.dto.UserResponseDto;
-import com.fcm.refactoring.service.user.dto.UserSaveRequestDto;
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;
 import com.fcm.refactoring.user.domain.User;
@@ -56,17 +55,6 @@ class UserServiceTest {
 
     }
 
-    private UserSaveRequestDto createUserSaveReqDto() {
-        return UserSaveRequestDto.builder()
-                .userEmail("a1010100z@naver.com")
-                .password("1234")
-                .confirmPassword("1234")
-                .gender(Gender.WOMAN)
-                .userType(UserType.TRAINER)
-                .age(26)
-                .userName("서재연")
-                .build();
-    }
 
     private User createUser() {
         return User.builder()
