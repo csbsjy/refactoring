@@ -1,6 +1,5 @@
 package com.fcm.refactoring.service.board.dto;
 
-import com.fcm.refactoring.board.domain.Comment;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,15 +11,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommentResponseDto {
     private Long id;
-    private String userId;
+    private String userEmail;
     private String content;
     private LocalDateTime createDateTime;
 
     @Builder
-    public CommentResponseDto(Comment comment) {
-        this.id = comment.getId();
-        this.userId = comment.getUser().getUserId();
-        this.content = comment.getContent();
-        this.createDateTime = comment.getCreateDateTime();
+    public CommentResponseDto(Long id, String userEmail, String content, LocalDateTime createDateTime) {
+        this.id = id;
+        this.userEmail = userEmail;
+        this.content = content;
+        this.createDateTime = createDateTime;
     }
 }

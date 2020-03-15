@@ -1,7 +1,10 @@
 package com.fcm.refactoring.board.domain;
 
-import com.fcm.refactoring.user.domain.User;
-import lombok.*;
+
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -13,16 +16,13 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long userId;
 
     private String subject;
 
@@ -45,8 +45,8 @@ public class Article {
     }
 
     @Builder
-    public Article(User user, String subject, String contents, boolean display, List<Comment> comments, LocalDateTime createDateTime, LocalDateTime modifiedDateTime) {
-        this.user = user;
+    public Article(Long userId, String subject, String contents, boolean display, List<Comment> comments, LocalDateTime createDateTime, LocalDateTime modifiedDateTime) {
+        this.userId = userId;
         this.subject = subject;
         this.contents = contents;
         this.display = display;

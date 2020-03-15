@@ -32,7 +32,7 @@ public class ArticleServiceRealTest {
         Article article = articleRepository.findById(id).get();
 
         assertAll(
-                () -> assertThat(article.getUser().getUserId()).isEqualTo("a1010100z@naver.com"),
+                () -> assertThat(article.getUserId()).isEqualTo(1L),
                 () -> assertThat(article.getSubject()).isEqualTo("제목입니다")
         );
     }

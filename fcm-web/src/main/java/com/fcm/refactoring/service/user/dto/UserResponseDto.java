@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 public class UserResponseDto {
 
     private Long id;
-    private String userId;
+    private String userEmail;
     private String userName;
     private UserType userType;
     private Gender gender;
 
     @Builder
-    public UserResponseDto(String userId, String userName, UserType userType, Gender gender) {
-        this.userId = userId;
+    public UserResponseDto(String userEmail, String userName, UserType userType, Gender gender) {
+        this.userEmail = userEmail;
         this.userName = userName;
         this.userType = userType;
         this.gender = gender;
@@ -28,7 +28,7 @@ public class UserResponseDto {
 
     public UserResponseDto(User user) {
         this.id = user.getId();
-        this.userId = user.getUserId();
+        this.userEmail = user.getUserEmail();
         this.userName = user.getUserName();
         this.gender = user.getGender();
         this.userType = user.getUserType();

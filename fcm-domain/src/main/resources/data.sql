@@ -1,6 +1,6 @@
-INSERT INTO USER(user_id, user_name, age, gender, user_type, enable, create_date_time) VALUES('a1010100z@naver.com', '서재연', 26, 'WOMAN' , 'TRAINER', true, now() );
-INSERT INTO USER(user_id, user_name, age, gender, user_type, enable, create_date_time) VALUES('minjung@gmail.com', '김민정', 23, 'WOMAN' , 'MEMBER', true, now()) ;
-INSERT INTO USER(user_id, user_name, age, gender, user_type, enable, create_date_time) VALUES('mun@naver.com', '문상일', 26, 'MAN' , 'MANAGER', true, now());
+INSERT INTO USER(user_email, user_name, age, gender, user_type, enable, create_date_time) VALUES('a1010100z@naver.com', '서재연', 26, 'WOMAN' , 'TRAINER', true, now() );
+INSERT INTO USER(user_email, user_name, age, gender, user_type, enable, create_date_time) VALUES('minjung@gmail.com', '김민정', 23, 'WOMAN' , 'MEMBER', true, now()) ;
+INSERT INTO USER(user_email, user_name, age, gender, user_type, enable, create_date_time) VALUES('mun@naver.com', '문상일', 26, 'MAN' , 'MANAGER', true, now());
 
 INSERT INTO ARTICLE(contents, create_date_time, modified_date_time, subject, user_id, display)  VALUES ('글 내용입니다', now(), now(), '글 제목입니다', 1, true);
 INSERT INTO ARTICLE(contents, create_date_time, modified_date_time, subject, user_id, display)  VALUES ('김민정 게시글입니다', now(), now(), '두번쨰 제목입니다', 2, true);
