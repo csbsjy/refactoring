@@ -23,9 +23,9 @@ public class UserService {
         return user.getId();
     }
 
-    public UserResponseDto findByUserId(final String userId) {
-        User user = userRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException(String.format("userid: %s 의 유저는 존재하지 않습니다", userId)));
+    public UserResponseDto findByUserEmail(final String userEmail) {
+        User user = userRepository.findByUserEmail(userEmail)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("userid: %s 의 유저는 존재하지 않습니다", userEmail)));
 
         return new UserResponseDto(user);
     }
