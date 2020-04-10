@@ -1,55 +1,74 @@
-plugins {
-    id 'org.springframework.boot' version '2.1.5.RELEASE'
-    id 'java'
-}
-
-apply plugin: 'io.spring.dependency-management'
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-configurations {
-    providedRuntime
-}
-
-
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    testCompile('org.springframework.boot:spring-boot-starter-test') {
-        exclude module: 'junit'
+buildscript {
+    ext {
+        springBootVersion = '2.2.0.RELEASE'
+        querydslPluginVersion = '1.0.10'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" } // plugin 저장소
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:${querydslPluginVersion}")
     }
 
-    testCompile('org.assertj:assertj-core')
-
-    testImplementation('org.junit.jupiter:junit-jupiter-api')
-    testCompile('org.junit.jupiter:junit-jupiter-params')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine')
+}
 
 
-    compileOnly('org.projectlombok:lombok')
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
-    compile("org.springframework.boot:spring-boot-starter-mail")
+    sourceCompatibility = 1.8
 
-    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
-    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    repositories {
+        mavenCentral()
+    }
 
-    compile('org.springframework.boot:spring-boot-starter-security')
-    compile ('org.springframework.security:spring-security-taglibs:3.2.0.RELEASE')
+    def querydslSrcDir = 'src/main/generated'
 
-// S3 설정
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-context', version: '2.0.0.RELEASE'
-    compile("commons-io:commons-io:2.4")
+    querydsl {
+        library = "com.querydsl:querydsl-apt"
+        jpa = true
+        querydslSourcesDir = querydslSrcDir
+    }
 
-    compile 'io.springfox:springfox-swagger2:2.6.1'
-    compile 'io.springfox:springfox-swagger-ui:2.6.1'
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java', querydslSrcDir]
+            }
+        }
+    }
+
+    compileQuerydsl {
+        options.annotationProcessorPath = configurations.querydsl
+    }
+
+    configurations {
+        querydsl.extendsFrom compileClasspath
+    }
+
+    dependencies {
+        testCompile('org.assertj:assertj-core')
+
+        testImplementation('org.junit.jupiter:junit-jupiter-api')
+        testCompile('org.junit.jupiter:junit-jupiter-params')
+        testRuntime('org.junit.jupiter:junit-jupiter-engine')
+        testCompile ('org.mockito:mockito-core:2.21.0')
+        testCompile ('org.mockito:mockito-junit-jupiter:2.23.0')
+
+        compileOnly('org.projectlombok:lombok')
+        annotationProcessor 'org.projectlombok:lombok'
+
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 
 }
 
-test {
-    useJUnitPlatform()
-}
