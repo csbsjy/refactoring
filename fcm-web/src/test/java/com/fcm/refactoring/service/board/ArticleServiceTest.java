@@ -3,8 +3,8 @@ package com.fcm.refactoring.service.board;
 import com.fcm.refactoring.board.domain.Article;
 import com.fcm.refactoring.board.repository.ArticleRepository;
 import com.fcm.refactoring.board.repository.dao.ArticleRow;
-import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
-import com.fcm.refactoring.service.board.dto.ArticleResponseDto;
+import com.fcm.refactoring.dto.board.ArticleListResponseDto;
+import com.fcm.refactoring.dto.board.ArticleResponseDto;
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;
 import com.fcm.refactoring.user.domain.User;
@@ -99,7 +99,7 @@ class ArticleServiceTest {
     }
 
     private User makeUser() {
-        return new User("a1010100z@naver.com", "서재연", 26,
+        return new User("a1010100z@naver.com", "1234", "서재연", 26,
                 Gender.WOMAN, UserType.TRAINER, LocalDateTime.now(), true);
     }
 

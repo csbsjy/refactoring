@@ -38,8 +38,9 @@ public class User {
     private boolean enable;
 
     @Builder
-    public User(String userEmail, String userName, int age, Gender gender, UserType userType, LocalDateTime createDateTime, boolean enable) {
+    public User(String userEmail, String password, String userName, int age, Gender gender, UserType userType, LocalDateTime createDateTime, boolean enable) {
         this.userEmail = userEmail;
+        this.password = password;
         this.userName = userName;
         this.age = age;
         this.gender = gender;
@@ -48,6 +49,7 @@ public class User {
         this.enable = enable;
     }
 
+
     public boolean isValidPassword(final String password) {
         return this.password.equals(password);
     }
@@ -55,6 +57,4 @@ public class User {
     public String getUserTypeName() {
         return userType.getName();
     }
-
-
 }
