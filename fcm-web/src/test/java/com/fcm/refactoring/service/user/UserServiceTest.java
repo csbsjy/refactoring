@@ -25,10 +25,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.when;
 
-<<<<<<<HEAD
-=======
-        >>>>>>>2f436834a6dd736700fca73ba66e9f7220cf8769
-
 @ExtendWith(MockitoExtension.class)
 @DisplayName("UserService Mock 테스트")
 class UserServiceTest {
@@ -91,7 +87,7 @@ class UserServiceTest {
     void login() {
         //given
         UserLoginRequestDto userLoginRequestDto = createUserLoginDto();
-        when(userRepository.findByUserId(userLoginRequestDto.getUserId())).thenReturn(Optional.of(createUser()));
+        when(userRepository.findByUserEmail(userLoginRequestDto.getUserId())).thenReturn(Optional.of(createUser()));
         AccessUser accessUser = AccessUser.of(createUser());
 
         //when
