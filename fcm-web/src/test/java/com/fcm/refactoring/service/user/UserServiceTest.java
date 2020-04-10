@@ -4,7 +4,6 @@ import com.fcm.refactoring.auth.AccessUser;
 import com.fcm.refactoring.auth.CustomUserSessionManager;
 import com.fcm.refactoring.dto.user.UserLoginRequestDto;
 import com.fcm.refactoring.dto.user.UserResponseDto;
-import com.fcm.refactoring.dto.user.UserSaveRequestDto;
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;
 import com.fcm.refactoring.user.domain.User;
@@ -25,6 +24,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.when;
+
+<<<<<<<HEAD
+=======
+        >>>>>>>2f436834a6dd736700fca73ba66e9f7220cf8769
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("UserService Mock 테스트")
@@ -51,9 +54,9 @@ class UserServiceTest {
     void findByUserId() {
 
         User user = createUser();
-        when(userRepository.findByUserId("a1010100z@naver.com")).thenReturn(Optional.of(user));
+        when(userRepository.findByUserEmail("a1010100z@naver.com")).thenReturn(Optional.of(user));
 
-        UserResponseDto userResponseDto = userService.findByUserId("a1010100z@naver.com");
+        UserResponseDto userResponseDto = userService.findByUserEmail("a1010100z@naver.com");
         assertAll(
                 () -> assertThat(userResponseDto.getUserName()).isEqualTo("서재연"),
                 () -> assertThat(userResponseDto.getGender()).isEqualTo(Gender.WOMAN),
@@ -65,27 +68,16 @@ class UserServiceTest {
     @DisplayName("없는 아이디로 유저조회시 익셉션던진다")
     @Test
     void findByWrongUserId() {
-        assertThatThrownBy(() -> userService.findByUserId("a1010100z@naver.com"))
+        assertThatThrownBy(() -> userService.findByUserEmail("a1010100z@naver.com"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("userid: a1010100z@naver.com 의 유저는 존재하지 않습니다");
 
     }
 
-    private UserSaveRequestDto createUserSaveReqDto() {
-        return UserSaveRequestDto.builder()
-                .userId("a1010100z@naver.com")
-                .password("1234")
-                .confirmPassword("1234")
-                .gender(Gender.WOMAN)
-                .userType(UserType.TRAINER)
-                .age(26)
-                .userName("서재연")
-                .build();
-    }
 
     private User createUser() {
         return User.builder()
-                .userId("a1010100z@naver.com")
+                .userEmail("a1010100z@naver.com")
                 .userName("서재연")
                 .password("1234")
                 .age(26)

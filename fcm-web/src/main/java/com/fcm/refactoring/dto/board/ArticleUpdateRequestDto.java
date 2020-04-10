@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ArticleUpdateRequestDto {
-    private String userId;
+    private String userEmail;
     private String subject;
     private String content;
 
     @Builder
-    public ArticleUpdateRequestDto(String userId, String subject, String content) {
-        this.userId = userId;
+    public ArticleUpdateRequestDto(String userEmail, String subject, String content) {
+        this.userEmail = userEmail;
         this.subject = subject;
         this.content = content;
     }

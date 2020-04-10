@@ -23,7 +23,7 @@ public class AccessUser {
 
     public static AccessUser of(User user) {
         return AccessUser.builder()
-                .userId(user.getUserId())
+                .userId(user.getUserEmail())
                 .userName(user.getUserName())
                 .userType(user.getUserType())
                 .build();

@@ -21,7 +21,7 @@ public class ArticleRepositoryCustomImpl implements ArticleRepositoryCustom {
     @Override
     public List<ArticleRow> findAllArticleAndCommentCount() {
         return queryFactory.select(Projections.constructor(ArticleRow.class,
-                article.id, article.user.userId, article.subject, article.createDateTime,
+                article.id, article.userId, article.subject, article.createDateTime,
                 ExpressionUtils.as(
                         JPAExpressions.select(count(comment.id))
                                 .from(comment)

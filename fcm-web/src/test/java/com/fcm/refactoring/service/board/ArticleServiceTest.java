@@ -8,6 +8,7 @@ import com.fcm.refactoring.dto.board.ArticleResponseDto;
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;
 import com.fcm.refactoring.user.domain.User;
+import com.fcm.refactoring.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +33,9 @@ class ArticleServiceTest {
 
     @Mock
     ArticleRepository articleRepository;
+
+    @Mock
+    UserRepository userRepository;
 
     @InjectMocks
     ArticleService articleService;
@@ -61,13 +65,13 @@ class ArticleServiceTest {
     @Test
     void articleById() {
         //given
-        Article article = makeArticle();
-        when(articleRepository.findById(1L)).thenReturn(Optional.of(article));
+        when(articleRepository.findById(1L)).thenReturn(Optional.of(makeArticle()));
+        when(userRepository.findById(1L)).thenReturn(Optional.of(makeUser()));
 
         //when
         ArticleResponseDto articleResponseDto = articleService.findById(1L);
         assertAll(
-                () -> assertThat(articleResponseDto.getUserId()).isEqualTo("a1010100z"),
+                () -> assertThat(articleResponseDto.getUserEmail()).isEqualTo("a1010100z@naver.com"),
                 () -> assertThat(articleResponseDto.getContents()).isEqualTo("내용 1"),
                 () -> assertThat(articleResponseDto.getSubject()).isEqualTo("제목 1"),
                 () -> assertThat(articleResponseDto.getUserType()).isEqualTo("트레이너")
@@ -81,9 +85,9 @@ class ArticleServiceTest {
         Article article = makeArticle();
         when(articleRepository.findById(1L)).thenReturn(Optional.of(article));
 
-        Long id = articleService.delete(1L);
+        articleService.delete(1L);
 
-        assertThat(articleRepository.findById(id).get().isDisplay()).isFalse();
+        assertThat(articleRepository.findById(1L).get().isDisplay()).isFalse();
     }
 
     @DisplayName("존재하지 않는 게시글 삭제시도 시 익셉션 던진다")
@@ -94,11 +98,13 @@ class ArticleServiceTest {
                 .hasMessage("1 번 게시글은 존재하지 않습니다");
     }
 
+    private User makeUser() {
+        return new User("a1010100z@naver.com", "1234", "서재연", 26,
+                Gender.WOMAN, UserType.TRAINER, LocalDateTime.now(), true);
+    }
 
     private Article makeArticle() {
-        User user = new User("a1010100z", "1234", "재연", 26, Gender.WOMAN,
-                UserType.TRAINER, LocalDateTime.now(), true);
-        Article article = new Article(1L, user, "제목 1", "내용 1", true,
+        Article article = new Article(1L, "제목 1", "내용 1", true,
                 Collections.EMPTY_LIST, LocalDateTime.now(), LocalDateTime.now());
         return article;
     }

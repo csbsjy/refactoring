@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 public class UserSaveRequestDto {
 
     @NotBlank
-    private String userId;
+    private String userEmail;
 
     @NotBlank
     private String userName;
@@ -33,8 +33,8 @@ public class UserSaveRequestDto {
     private UserType userType;
 
     @Builder
-    public UserSaveRequestDto(@NotBlank String userId, @NotBlank String userName, @NotBlank String password, @NotBlank String confirmPassword, @NotBlank int age, @NotBlank Gender gender, @NotBlank UserType userType) {
-        this.userId = userId;
+    public UserSaveRequestDto(@NotBlank String userEmail, @NotBlank String userName, @NotBlank String password, @NotBlank String confirmPassword, @NotBlank int age, @NotBlank Gender gender, @NotBlank UserType userType) {
+        this.userEmail = userEmail;
         this.userName = userName;
         this.password = password;
         this.confirmPassword = confirmPassword;
@@ -44,9 +44,8 @@ public class UserSaveRequestDto {
     }
 
     public User toEntity() {
-
         return User.builder()
-                .userId(this.userId)
+                .userEmail(this.userEmail)
                 .userName(this.userName)
                 .age(this.age)
                 .gender(this.gender)
