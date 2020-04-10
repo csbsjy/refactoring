@@ -1,7 +1,9 @@
 package com.fcm.refactoring.auth;
 
-public interface UserSessionManager<AccessUser> {
-    AccessUser saveUser(AccessUser accessUser);
+public interface UserSessionManager {
+    void save(AccessUser accessUser);
 
-    AccessUser deleteUser(String sessionId);
+    String remove(String sessionId);
+
+    AccessUser findUser();
 }

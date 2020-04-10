@@ -1,6 +1,7 @@
 package com.fcm.refactoring.auth;
 
 import com.fcm.refactoring.user.UserType;
+import com.fcm.refactoring.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,4 +21,12 @@ public class AccessUser {
         this.userType = userType;
     }
 
+    public static AccessUser of(User user) {
+        return AccessUser.builder()
+                .userId(user.getUserId())
+                .userName(user.getUserName())
+                .userType(user.getUserType())
+                .build();
+
+    }
 }

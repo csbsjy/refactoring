@@ -3,9 +3,9 @@ package com.fcm.refactoring.service.board;
 
 import com.fcm.refactoring.board.domain.Article;
 import com.fcm.refactoring.board.repository.ArticleRepository;
-import com.fcm.refactoring.service.board.dto.ArticleListResponseDto;
-import com.fcm.refactoring.service.board.dto.ArticleResponseDto;
-import com.fcm.refactoring.service.board.dto.ArticleUpdateRequestDto;
+import com.fcm.refactoring.dto.board.ArticleListResponseDto;
+import com.fcm.refactoring.dto.board.ArticleResponseDto;
+import com.fcm.refactoring.dto.board.ArticleUpdateRequestDto;
 import com.fcm.refactoring.user.domain.User;
 import com.fcm.refactoring.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

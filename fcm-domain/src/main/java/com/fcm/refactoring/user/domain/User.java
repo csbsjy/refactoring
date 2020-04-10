@@ -56,6 +56,4 @@ public class User {
     public String getUserTypeName() {
         return userType.getName();
     }
-
-
 }

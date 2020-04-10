@@ -1,4 +1,4 @@
-package com.fcm.refactoring.service.user.dto;
+package com.fcm.refactoring.dto.user;
 
 import com.fcm.refactoring.user.Gender;
 import com.fcm.refactoring.user.UserType;

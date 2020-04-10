@@ -2,7 +2,7 @@ package com.fcm.refactoring.service.board;
 
 import com.fcm.refactoring.board.domain.Article;
 import com.fcm.refactoring.board.repository.ArticleRepository;
-import com.fcm.refactoring.service.board.dto.ArticleUpdateRequestDto;
+import com.fcm.refactoring.dto.board.ArticleUpdateRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
