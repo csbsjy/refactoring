@@ -1,8 +1,8 @@
-package com.fcm.refactoring.service.user.dto;
+package com.fcm.refactoring.dto.user;
 
-import com.fcm.refactoring.user.Gender;
-import com.fcm.refactoring.user.UserType;
+import com.fcm.refactoring.user.domain.Gender;
 import com.fcm.refactoring.user.domain.User;
+import com.fcm.refactoring.user.domain.UserType;
 
 import javax.validation.constraints.NotBlank;
 
@@ -29,20 +29,12 @@ public class UserSaveRequestDto {
     @NotBlank
     private UserType userType;
 
-    public User toEntity() {
-
-        return User.builder()
-                .userEmail(this.userEmail)
-                .userName(this.userName)
-                .age(this.age)
-                .gender(this.gender)
-                .userType(this.userType)
-                .build();
-    }
-
     public boolean isValidPassword() {
         return password.equals(confirmPassword);
     }
 
+    public User toEntity() {
+        return new User(userEmail, password, userName, age, gender, userType);
+    }
 }
 

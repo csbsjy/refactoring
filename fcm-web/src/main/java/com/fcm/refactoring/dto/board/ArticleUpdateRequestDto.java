@@ -1,4 +1,5 @@
-package com.fcm.refactoring.service.board.dto;
+package com.fcm.refactoring.dto.board;
+
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -7,13 +8,15 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CommentUpdateRequestDto {
+public class ArticleUpdateRequestDto {
     private String userEmail;
+    private String subject;
     private String content;
 
     @Builder
-    public CommentUpdateRequestDto(String userEmail, String content) {
+    public ArticleUpdateRequestDto(String userEmail, String subject, String content) {
         this.userEmail = userEmail;
+        this.subject = subject;
         this.content = content;
     }
 }

@@ -1,8 +1,8 @@
-package com.fcm.refactoring.service.user.dto;
+package com.fcm.refactoring.dto.user;
 
-import com.fcm.refactoring.user.Gender;
-import com.fcm.refactoring.user.UserType;
+import com.fcm.refactoring.user.domain.Gender;
 import com.fcm.refactoring.user.domain.User;
+import com.fcm.refactoring.user.domain.UserType;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

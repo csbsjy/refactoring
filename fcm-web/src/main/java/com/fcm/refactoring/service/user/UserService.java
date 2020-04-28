@@ -1,7 +1,9 @@
 package com.fcm.refactoring.service.user;
 
-import com.fcm.refactoring.service.user.dto.UserResponseDto;
-import com.fcm.refactoring.service.user.dto.UserSaveRequestDto;
+import com.fcm.refactoring.auth.AccessUser;
+import com.fcm.refactoring.dto.user.UserLoginDto;
+import com.fcm.refactoring.dto.user.UserResponseDto;
+import com.fcm.refactoring.dto.user.UserSaveRequestDto;
 import com.fcm.refactoring.user.domain.User;
 import com.fcm.refactoring.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +15,17 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public Long saveUser(final UserSaveRequestDto userSaveRequestDto) {
+    public AccessUser login(final UserLoginDto userLoginDto) {
+        User findUser = userRepository.findByUserEmail(userLoginDto.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException(String.format("%s 에 해당하는 유저는 없습니다", userLoginDto.getEmail())));
+        if (!findUser.isValidPassword(userLoginDto.getPassword())) {
+            throw new IllegalArgumentException("패스워드가 틀렸습니다!");
+        }
+
+        return AccessUser.of(findUser.getUserEmail(), findUser.getUserName(), findUser.getUserType());
+    }
+
+    public Long join(final UserSaveRequestDto userSaveRequestDto) {
         if (!userSaveRequestDto.isValidPassword()) {
             throw new IllegalArgumentException("패스워드를 다시 입력해주십시오");
         }

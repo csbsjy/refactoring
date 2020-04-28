@@ -1,9 +1,7 @@
 package com.fcm.refactoring.user.domain;
 
-import com.fcm.refactoring.user.Gender;
-import com.fcm.refactoring.user.UserType;
 import lombok.AccessLevel;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -11,9 +9,10 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+//@Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -37,15 +36,14 @@ public class User {
 
     private boolean enable;
 
-    @Builder
-    public User(String userEmail, String userName, int age, Gender gender, UserType userType, LocalDateTime createDateTime, boolean enable) {
+    public User(String userEmail, String password, String userName, int age, Gender gender, UserType userType) {
         this.userEmail = userEmail;
+        this.password = password;
         this.userName = userName;
         this.age = age;
         this.gender = gender;
         this.userType = userType;
-        this.createDateTime = createDateTime;
-        this.enable = enable;
+        this.enable = true;
     }
 
     public boolean isValidPassword(final String password) {

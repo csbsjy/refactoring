@@ -1,4 +1,4 @@
-package com.fcm.refactoring.user;
+package com.fcm.refactoring.user.domain;
 
 import lombok.Getter;
 
