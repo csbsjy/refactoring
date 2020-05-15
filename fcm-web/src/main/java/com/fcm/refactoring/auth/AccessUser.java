@@ -19,5 +19,4 @@ public class AccessUser {
         this.userName = userName;
         this.userType = userType;
     }
-
 }
